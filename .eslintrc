@@ -15,6 +15,7 @@
       {
         "properties": "never"
       }
-    ]
+    ],
+    "jsdoc/require-description-complete-sentence": "off"
   }
 }

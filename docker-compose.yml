@@ -1,41 +1,13 @@
-version: '3.4'
+version: "3"
 services:
-  express-api-es6-starter:
-    build:
-      context: .
-      target: dev
-    volumes:
-      - .env.docker:/app/.env
+  postgres:
+    image: "postgres"
+    container_name: "express_postgres"
     ports:
-      - '8848:8848'
-    depends_on:
-      - pg
-      - pg_test
-    links:
-      - pg
-      - pg_test
-
-  migration:
-    build:
-      context: .
-      target: migrate
+      - 5432:5432
+    environment:
+      POSTGRES_DB: express
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
     volumes:
-      - .env.docker:/app/.env
-    depends_on:
-      - pg
-      - pg_test
-    links:
-      - pg
-      - pg_test
-  pg:
-    image: postgres:13-alpine
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=mysecretpassword
-      - POSTGRES_DB=express
-  pg_test:
-    image: postgres:13-alpine
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=mysecretpassword
-      - POSTGRES_DB=express_test
+      - ./db/data:/var/lib/postgresql/data
