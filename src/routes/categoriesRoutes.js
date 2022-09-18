@@ -5,6 +5,8 @@ import {} from '../validators/categoriesValidator';
 
 const router = Router();
 
+router.get('/', categoriesController.fetchAll);
+
 /**
  * GET /api/categories/:id
  */
