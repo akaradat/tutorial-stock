@@ -28,3 +28,17 @@ export function fetchById(req, res, next) {
     .then((data) => res.json({ data }))
     .catch((err) => next(err));
 }
+
+/**
+ * Update a category.
+ *
+ * @param {Object} req
+ * @param {Object} res
+ * @param {Function} next
+ */
+export function update(req, res, next) {
+  categoriesService
+    .updateCategories(req.params.id, req.body)
+    .then((data) => res.json({ data }))
+    .catch((err) => next(err));
+}

@@ -25,3 +25,14 @@ export function getCategories(id) {
       throw Boom.notFound('Category not found');
     });
 }
+
+/**
+ * Update a Categories.
+ *
+ * @param   {Number|String}  id
+ * @param   {Object}         categories
+ * @returns {Promise}
+ */
+export function updateCategories(id, categories) {
+  return new Categories({ id }).save({ name: categories.name });
+}

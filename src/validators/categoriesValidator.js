@@ -23,4 +23,18 @@ function findCategories(req, res, next) {
     .catch((err) => next(err));
 }
 
-export { findCategories };
+/**
+ * Validate create/update categories request.
+ *
+ * @param   {Object}   req
+ * @param   {Object}   res
+ * @param   {Function} next
+ * @returns {Promise}
+ */
+function categoriesValidator(req, res, next) {
+  return validate(req.body, schema)
+    .then(() => next())
+    .catch((err) => next(err));
+}
+
+export { findCategories, categoriesValidator };
