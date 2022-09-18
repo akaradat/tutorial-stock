@@ -16,3 +16,13 @@ export function getCategories(id) {
       throw Boom.notFound('Category not found');
     });
 }
+
+/**
+ * Create new categories.
+ *
+ * @param   {Object}  categories
+ * @returns {Promise}
+ */
+export function createCategories(categories) {
+  return new Categories({ name: categories.name }).save();
+}
