@@ -18,7 +18,7 @@ const schema = Joi.object({
  */
 function findCategories(req, res, next) {
   return categoriesService
-    .getCategoriesService(req.params.id)
+    .getCategories(req.params.id)
     .then(() => next())
     .catch((err) => next(err));
 }
