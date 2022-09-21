@@ -2,17 +2,24 @@ import HttpStatus from 'http-status-codes';
 
 import * as categoriesService from '../services/categoriesService';
 
-export function deleteCategory(req, res, next) {
-  categoriesService
-    .deleteCategory(req.params.id)
-    .then((data) => res.status(HttpStatus.NO_CONTENT).json({ data }))
-    .catch((err) => next(err));
+export async function deleteCategory(req, res, next) {
+  try {
+    const data = await categoriesService.deleteCategory(req.params.id);
+
+    res.status(HttpStatus.NO_CONTENT).json({ data });
+  } catch (error) {
+    next(error);
+  }
 }
 
 export async function fetchAll(req, res, next) {
-  const data = await categoriesService.getAllCategories();
+  try {
+    const data = await categoriesService.getAllCategories();
 
-  res.json({ data });
+    res.json({ data });
+  } catch (error) {
+    next(error);
+  }
 }
 
 export function fetchById(req, res, next) {
