@@ -5,6 +5,6 @@ import { productValidator } from '../validators/productValidator';
 
 const router = Router();
 
-router.post('/', productController.create);
+router.post('/', productValidator, productController.create);
 
 export default router;
