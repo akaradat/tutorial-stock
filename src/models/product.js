@@ -12,13 +12,6 @@ class Product extends db.Model {
   get tableName() {
     return TABLE_NAME;
   }
-
-  /**
-   * Table has timestamps.
-   */
-  // get hasTimestamps() {
-  //   return true;
-  // }
 }
 
 export default Product;
