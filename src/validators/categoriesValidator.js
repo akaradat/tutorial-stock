@@ -18,9 +18,15 @@ const schema = Joi.object({
  */
 function findCategories(req, res, next) {
   return categoriesService
-    .getCategoriesService(req.params.id)
+    .getCategories(req.params.id)
     .then(() => next())
     .catch((err) => next(err));
 }
 
-export { findCategories };
+function categoriesValidator(req, res, next) {
+  return validate(req.body, schema)
+    .then(() => next())
+    .catch((err) => next(err));
+}
+
+export { findCategories, categoriesValidator };
