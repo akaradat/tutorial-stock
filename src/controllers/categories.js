@@ -28,3 +28,17 @@ export function fetchById(req, res, next) {
     .then((data) => res.json({ data }))
     .catch((err) => next(err));
 }
+
+/**
+ * Create a new category.
+ *
+ * @param {Object} req
+ * @param {Object} res
+ * @param {Function} next
+ */
+export function create(req, res, next) {
+  categoriesService
+    .createCategories(req.body)
+    .then((data) => res.status(HttpStatus.CREATED).json({ data }))
+    .catch((err) => next(err));
+}
