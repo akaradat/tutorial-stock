@@ -2,13 +2,13 @@ import HttpStatus from 'http-status-codes';
 
 import * as productService from '../services/productService';
 
-/**
- * Get a product by its id.
- *
- * @param {Object} req
- * @param {Object} res
- * @param {Function} next
- */
+export function create(req, res, next) {
+  productService
+    .createProduct(req.body)
+    .then((data) => res.status(HttpStatus.CREATED).json({ data }))
+    .catch((err) => next(err));
+}
+
 export function fetchById(req, res, next) {
   productService
     .getProduct(req.params.id)
@@ -16,13 +16,6 @@ export function fetchById(req, res, next) {
     .catch((err) => next(err));
 }
 
-/**
- * Delete a product.
- *
- * @param {Object} req
- * @param {Object} res
- * @param {Function} next
- */
 export function deleteProduct(req, res, next) {
   productService
     .deleteProduct(req.params.id)
