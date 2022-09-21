@@ -3,7 +3,7 @@ import db from '../db';
 const TABLE_NAME = 'products';
 
 /**
- * User model.
+ * Product model.
  */
 class Product extends db.Model {
   /**
@@ -11,13 +11,6 @@ class Product extends db.Model {
    */
   get tableName() {
     return TABLE_NAME;
-  }
-
-  /**
-   * Table has timestamps.
-   */
-  get hasTimestamps() {
-    return false;
   }
 }
 

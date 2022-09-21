@@ -22,6 +22,13 @@ export function fetchById(req, res, next) {
     .catch((err) => next(err));
 }
 
+export function update(req, res, next) {
+  productService
+    .updateProduct(req.params.id, req.body)
+    .then((data) => res.json({ data }))
+    .catch((err) => next(err));
+}
+
 export function deleteProduct(req, res, next) {
   productService
     .deleteProduct(req.params.id)

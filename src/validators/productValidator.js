@@ -1,7 +1,15 @@
-import * as productService from '../services/productService';
+import Joi from '@hapi/joi';
 
+import * as productService from '../services/productService';
+import validate from '../utils/validate';
+
+// Validation schema
 const schema = Joi.object({
-  name: Joi.string().label('Name').max(90).required()
+  name: Joi.string().label('Name').required(),
+  amount: Joi.number().label('Amount').required(),
+  price: Joi.number().label('Price').required(),
+  category_id: Joi.number().label('Category_id').required(),
+  detail: Joi.string().label('Detail').required()
 });
 
 function productValidator(req, res, next) {

@@ -25,6 +25,16 @@ export function getProduct(id) {
     });
 }
 
+export function updateProduct(id, product) {
+  return new Product({ id }).save({
+    name: product.name,
+    amount: product.amount,
+    price: product.price,
+    category_id: product.category_id,
+    detail: product.detail
+  });
+}
+
 export function deleteProduct(id) {
   return new Product({ id }).fetch().then((product) => product.destroy());
 }
