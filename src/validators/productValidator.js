@@ -11,17 +11,24 @@ const schema = Joi.object({
   detail: Joi.string().label('Detail').required()
 });
 
-function productValidator(req, res, next) {
-  return validate(req.body, schema)
-    .then(() => next())
-    .catch((err) => next(err));
+async function findProduct(req, res, next) {
+  try {
+    await productService.getProduct(req.params.id);
+
+    return next();
+  } catch (error) {
+    return next(error);
+  }
 }
 
-function findProduct(req, res, next) {
-  return productService
-    .getProduct(req.params.id)
-    .then(() => next())
-    .catch((err) => next(err));
+async function productValidator(req, res, next) {
+  try {
+    await validate(req.body, schema);
+
+    return next();
+  } catch (error) {
+    return next(error);
+  }
 }
 
 export { findProduct, productValidator };
