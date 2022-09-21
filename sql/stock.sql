@@ -28,7 +28,7 @@ CREATE TABLE "products" (
 CREATE SEQUENCE IF NOT EXISTS transactions_id_seq;
 
 -- Table Definition
-CREATE TABLE "public"."transactions" (
+CREATE TABLE "transactions" (
     "id" int8 NOT NULL DEFAULT nextval('transactions_id_seq'::regclass),
     "product_id" int8 NOT NULL,
     "amount" int8 NOT NULL,
