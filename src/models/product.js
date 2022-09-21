@@ -17,7 +17,7 @@ class Product extends db.Model {
    * Table has timestamps.
    */
   get hasTimestamps() {
-    return true;
+    return false;
   }
 }
 

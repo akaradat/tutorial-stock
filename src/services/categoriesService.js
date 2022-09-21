@@ -25,3 +25,11 @@ export function getCategories(id) {
       throw Boom.notFound('Category not found');
     });
 }
+
+export function updateCategories(id, categories) {
+  return new Categories({ id }).save({ name: categories.name });
+}
+
+export function createCategories(categories) {
+  return new Categories({ name: categories.name }).save();
+}

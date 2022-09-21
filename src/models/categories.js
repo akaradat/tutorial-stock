@@ -16,9 +16,9 @@ class Categories extends db.Model {
   /**
    * Table has timestamps.
    */
-  get hasTimestamps() {
-    return true;
-  }
+  // get hasTimestamps() {
+  //   return true;
+  // }
 }
 
 export default Categories;
