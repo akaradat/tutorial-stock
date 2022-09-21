@@ -3,7 +3,6 @@ import Joi from '@hapi/joi';
 import * as productService from '../services/productService';
 import validate from '../utils/validate';
 
-// Validation schema
 const schema = Joi.object({
   name: Joi.string().label('Name').required(),
   amount: Joi.number().label('Amount').required(),
