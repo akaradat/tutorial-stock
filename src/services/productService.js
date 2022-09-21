@@ -2,12 +2,6 @@ import Boom from '@hapi/boom';
 
 import Product from '../models/product';
 
-/**
- * Create new user.
- *
- * @param   {Object}  product
- * @returns {Promise}
- */
 export function createProduct(product) {
   return new Product({
     name: product.name,
@@ -16,4 +10,17 @@ export function createProduct(product) {
     category_id: product.category_id,
     detail: product.detail
   }).save();
+}
+
+export function getProduct(id) {
+  return new Product({ id })
+    .fetch()
+    .then((product) => product)
+    .catch(Product.NotFoundError, () => {
+      throw Boom.notFound('Product not found');
+    });
+}
+
+export function deleteProduct(id) {
+  return new Product({ id }).fetch().then((product) => product.destroy());
 }
