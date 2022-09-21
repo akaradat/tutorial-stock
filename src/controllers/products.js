@@ -2,6 +2,12 @@ import HttpStatus from 'http-status-codes';
 
 import * as productService from '../services/productService';
 
+export async function fetchAll(req, res, next) {
+  const data = await productService.getAllProduct();
+
+  res.json({ data });
+}
+
 export function create(req, res, next) {
   productService
     .createProduct(req.body)

@@ -2,6 +2,10 @@ import Boom from '@hapi/boom';
 
 import Product from '../models/product';
 
+export function getAllProduct() {
+  return Product.fetchAll();
+}
+
 export function createProduct(product) {
   return new Product({
     name: product.name,
