@@ -18,19 +18,11 @@ const schema = Joi.object({
  */
 function findCategories(req, res, next) {
   return categoriesService
-    .getCategoriesService(req.params.id)
+    .getCategories(req.params.id)
     .then(() => next())
     .catch((err) => next(err));
 }
 
-/**
- * Validate create/update category request.
- *
- * @param   {Object}   req
- * @param   {Object}   res
- * @param   {Function} next
- * @returns {Promise}
- */
 function categoriesValidator(req, res, next) {
   return validate(req.body, schema)
     .then(() => next())
