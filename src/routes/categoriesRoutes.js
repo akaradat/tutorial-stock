@@ -6,15 +6,8 @@ import { findCategories, categoriesValidator } from '../validators/categoriesVal
 const router = Router();
 
 router.get('/', categoriesController.fetchAll);
-
-/**
- * GET /api/categories/:id
- */
 router.get('/:id', categoriesController.fetchById);
-
-/**
- * PUT /api/categories/:id
- */
+router.post('/', categoriesValidator, categoriesController.create);
 router.put('/:id', findCategories, categoriesValidator, categoriesController.update);
 
 export default router;

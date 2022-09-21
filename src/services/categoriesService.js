@@ -26,13 +26,10 @@ export function getCategories(id) {
     });
 }
 
-/**
- * Update a Categories.
- *
- * @param   {Number|String}  id
- * @param   {Object}         categories
- * @returns {Promise}
- */
 export function updateCategories(id, categories) {
   return new Categories({ id }).save({ name: categories.name });
+}
+
+export function createCategories(categories) {
+  return new Categories({ name: categories.name }).save();
 }

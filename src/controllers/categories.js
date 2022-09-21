@@ -29,16 +29,16 @@ export function fetchById(req, res, next) {
     .catch((err) => next(err));
 }
 
-/**
- * Update a category.
- *
- * @param {Object} req
- * @param {Object} res
- * @param {Function} next
- */
 export function update(req, res, next) {
   categoriesService
     .updateCategories(req.params.id, req.body)
     .then((data) => res.json({ data }))
+    .catch((err) => next(err));
+}
+
+export function create(req, res, next) {
+  categoriesService
+    .createCategories(req.body)
+    .then((data) => res.status(HttpStatus.CREATED).json({ data }))
     .catch((err) => next(err));
 }
