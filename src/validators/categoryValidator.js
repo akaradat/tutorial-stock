@@ -1,23 +1,23 @@
 import Joi from '@hapi/joi';
 
 import validate from '../utils/validate';
-import * as categoriesService from '../services/categoriesService';
+import * as categoryService from '../services/categoryService';
 
 const schema = Joi.object({
   name: Joi.string().label('Name').max(90).required()
 });
 
 function findCategory(req, res, next) {
-  return categoriesService
+  return categoryService
     .getCategory(req.params.id)
     .then(() => next())
     .catch((err) => next(err));
 }
 
-function categoriesValidator(req, res, next) {
+function categoryValidator(req, res, next) {
   return validate(req.body, schema)
     .then(() => next())
     .catch((err) => next(err));
 }
 
-export { findCategory, categoriesValidator };
+export { findCategory, categoryValidator };
