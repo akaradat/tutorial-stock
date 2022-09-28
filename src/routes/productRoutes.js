@@ -11,4 +11,6 @@ router.post('/', productValidator, productController.create);
 router.put('/:id', findProduct, productValidator, productController.update);
 router.delete('/:id', findProduct, productController.deleteProduct);
 
+router.post('/:id/stock', findProduct, productController.stockProduct);
+
 export default router;

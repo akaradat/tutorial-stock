@@ -35,3 +35,10 @@ export function deleteProduct(req, res, next) {
     .then((data) => res.status(HttpStatus.NO_CONTENT).json({ data }))
     .catch((err) => next(err));
 }
+
+export function stockProduct(req, res, next) {
+  productService
+    .stockProduct(req.params.id, req.body)
+    .then((data) => res.json({ data }))
+    .catch((err) => next(err));
+}
