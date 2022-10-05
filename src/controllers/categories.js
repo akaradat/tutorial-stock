@@ -44,9 +44,9 @@ export async function update(req, res, next) {
 
 export async function deleteCategory(req, res, next) {
   try {
-    const data = await categoriesService.deleteCategory(req.params.id);
+    await categoriesService.deleteCategory(req.params.id);
 
-    res.status(HttpStatus.NO_CONTENT).json({ data });
+    res.status(HttpStatus.NO_CONTENT).end();
   } catch (error) {
     next(error);
   }
