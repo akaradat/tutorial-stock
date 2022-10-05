@@ -3,7 +3,7 @@ import { Router } from 'express';
 import swaggerSpec from './utils/swagger';
 import userRoutes from './routes/userRoutes';
 import productRoutes from './routes/productRoutes';
-import categoriesRoutes from './routes/categoriesRoutes';
+import categoryRoutes from './routes/categoryRoutes';
 
 const router = Router();
 
@@ -20,6 +20,6 @@ router.get('/', (req, res) => {
 
 router.use('/users', userRoutes);
 router.use('/products', productRoutes);
-router.use('/categories', categoriesRoutes);
+router.use('/categories', categoryRoutes);
 
 export default router;

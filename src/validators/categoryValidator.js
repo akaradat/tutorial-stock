@@ -1,7 +1,7 @@
 import Joi from '@hapi/joi';
 
 import validate from '../utils/validate';
-import * as categoriesService from '../services/categoriesService';
+import * as categoryService from '../services/categoryService';
 
 const schema = Joi.object({
   name: Joi.string().label('Name').max(90).required()
@@ -9,7 +9,7 @@ const schema = Joi.object({
 
 async function findCategory(req, res, next) {
   try {
-    await categoriesService.getCategory(req.params.id);
+    await categoryService.getCategory(req.params.id);
 
     return next();
   } catch (error) {
@@ -17,7 +17,7 @@ async function findCategory(req, res, next) {
   }
 }
 
-async function categoriesValidator(req, res, next) {
+async function categoryValidator(req, res, next) {
   try {
     await validate(req.body, schema);
 
@@ -27,4 +27,4 @@ async function categoriesValidator(req, res, next) {
   }
 }
 
-export { findCategory, categoriesValidator };
+export { findCategory, categoryValidator };

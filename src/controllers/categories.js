@@ -1,10 +1,10 @@
 import HttpStatus from 'http-status-codes';
 
-import * as categoriesService from '../services/categoriesService';
+import * as categoryService from '../services/categoryService';
 
 export async function fetchAll(req, res, next) {
   try {
-    const data = await categoriesService.getAllCategories();
+    const data = await categoryService.getAllCategories();
 
     res.json({ data });
   } catch (error) {
@@ -14,7 +14,7 @@ export async function fetchAll(req, res, next) {
 
 export async function fetchById(req, res, next) {
   try {
-    const data = await categoriesService.getCategories(req.params.id);
+    const data = await categoryService.getCategory(req.params.id);
 
     res.json({ data });
   } catch (error) {
@@ -24,7 +24,7 @@ export async function fetchById(req, res, next) {
 
 export async function create(req, res, next) {
   try {
-    const data = await categoriesService.createCategories(req.body);
+    const data = await categoryService.createCategory(req.body);
 
     res.status(HttpStatus.CREATED).json({ data });
   } catch (error) {
@@ -34,7 +34,7 @@ export async function create(req, res, next) {
 
 export async function update(req, res, next) {
   try {
-    const data = await categoriesService.updateCategories(req.params.id, req.body);
+    const data = await categoryService.updateCategory(req.params.id, req.body);
 
     res.json({ data });
   } catch (error) {
@@ -44,7 +44,7 @@ export async function update(req, res, next) {
 
 export async function deleteCategory(req, res, next) {
   try {
-    await categoriesService.deleteCategory(req.params.id);
+    await categoryService.deleteCategory(req.params.id);
 
     res.status(HttpStatus.NO_CONTENT).end();
   } catch (error) {
