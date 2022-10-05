@@ -7,17 +7,24 @@ const schema = Joi.object({
   name: Joi.string().label('Name').max(90).required()
 });
 
-function findCategory(req, res, next) {
-  return categoryService
-    .getCategory(req.params.id)
-    .then(() => next())
-    .catch((err) => next(err));
+async function findCategory(req, res, next) {
+  try {
+    await categoryService.getCategory(req.params.id);
+
+    return next();
+  } catch (error) {
+    return next(error);
+  }
 }
 
-function categoryValidator(req, res, next) {
-  return validate(req.body, schema)
-    .then(() => next())
-    .catch((err) => next(err));
+async function categoryValidator(req, res, next) {
+  try {
+    await validate(req.body, schema);
+
+    return next();
+  } catch (error) {
+    return next(error);
+  }
 }
 
 export { findCategory, categoryValidator };

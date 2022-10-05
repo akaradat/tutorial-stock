@@ -3,35 +3,51 @@ import HttpStatus from 'http-status-codes';
 import * as productService from '../services/productService';
 
 export async function fetchAll(req, res, next) {
-  const data = await productService.getAllProducts();
+  try {
+    const data = await productService.getAllProducts();
 
-  res.json({ data });
+    res.json({ data });
+  } catch (error) {
+    next(error);
+  }
 }
 
-export function create(req, res, next) {
-  productService
-    .createProduct(req.body)
-    .then((data) => res.status(HttpStatus.CREATED).json({ data }))
-    .catch((err) => next(err));
+export async function fetchById(req, res, next) {
+  try {
+    const data = await productService.getProduct(req.params.id);
+
+    res.json({ data });
+  } catch (error) {
+    next(error);
+  }
 }
 
-export function fetchById(req, res, next) {
-  productService
-    .getProduct(req.params.id)
-    .then((data) => res.json({ data }))
-    .catch((err) => next(err));
+export async function create(req, res, next) {
+  try {
+    const data = await productService.createProduct(req.body);
+
+    res.status(HttpStatus.CREATED).json({ data });
+  } catch (error) {
+    next(error);
+  }
 }
 
-export function update(req, res, next) {
-  productService
-    .updateProduct(req.params.id, req.body)
-    .then((data) => res.json({ data }))
-    .catch((err) => next(err));
+export async function update(req, res, next) {
+  try {
+    const data = await productService.updateProduct(req.params.id, req.body);
+
+    res.json({ data });
+  } catch (error) {
+    next(error);
+  }
 }
 
-export function deleteProduct(req, res, next) {
-  productService
-    .deleteProduct(req.params.id)
-    .then((data) => res.status(HttpStatus.NO_CONTENT).json({ data }))
-    .catch((err) => next(err));
+export async function deleteProduct(req, res, next) {
+  try {
+    await productService.deleteProduct(req.params.id);
+
+    res.status(HttpStatus.NO_CONTENT).end();
+  } catch (error) {
+    next(error);
+  }
 }
