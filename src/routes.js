@@ -3,23 +3,14 @@ import { Router } from 'express';
 import swaggerSpec from './utils/swagger';
 import userRoutes from './routes/userRoutes';
 import productRoutes from './routes/productRoutes';
-import categoriesRoutes from './routes/categoriesRoutes';
+import categoryRoutes from './routes/categoryRoutes';
 
-/**
- * Contains all API routes for the application.
- */
 const router = Router();
 
-/**
- * GET /api/swagger.json
- */
 router.get('/swagger.json', (req, res) => {
   res.json(swaggerSpec);
 });
 
-/**
- * GET /api
- */
 router.get('/', (req, res) => {
   res.json({
     app: req.app.locals.title,
@@ -29,6 +20,6 @@ router.get('/', (req, res) => {
 
 router.use('/users', userRoutes);
 router.use('/products', productRoutes);
-router.use('/categories', categoriesRoutes);
+router.use('/categories', categoryRoutes);
 
 export default router;

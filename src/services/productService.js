@@ -2,7 +2,7 @@ import Boom from '@hapi/boom';
 
 import Product from '../models/product';
 
-export function getAllProduct() {
+export function getAllProducts() {
   return Product.fetchAll();
 }
 

@@ -3,7 +3,7 @@ import HttpStatus from 'http-status-codes';
 import * as productService from '../services/productService';
 
 export async function fetchAll(req, res, next) {
-  const data = await productService.getAllProduct();
+  const data = await productService.getAllProducts();
 
   res.json({ data });
 }
