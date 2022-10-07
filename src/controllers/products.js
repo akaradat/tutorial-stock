@@ -54,7 +54,7 @@ export async function deleteProduct(req, res, next) {
 
 export async function stockProduct(req, res, next) {
   try {
-    const data = await productService.stockProduct(req.params.id, req.body);
+    const data = await productService.updateProductStock(req.params.id, req.body);
 
     res.json({ data });
   } catch (error) {
