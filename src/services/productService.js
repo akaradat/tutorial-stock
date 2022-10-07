@@ -39,10 +39,10 @@ export function deleteProduct(id) {
   return new Product({ id }).fetch().then((product) => product.destroy());
 }
 
-export async function stockProduct(id, product) {
+export async function updateProductStock(id, amount) {
   const old = await getProduct(id).then((data) => data);
 
   return new Product({ id }).save({
-    amount: Number(old.attributes.amount) + Number(product.amount)
+    amount: Number(old.attributes.amount) + Number(amount.amount)
   });
 }
