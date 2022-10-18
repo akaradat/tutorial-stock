@@ -15,12 +15,13 @@ export function getCategory(id) {
     });
 }
 
-export function updateCategory(id, Category) {
-  return new Category({ id }).save({ name: Category.name });
+export function updateCategory(id, category) {
+  return new Category({ id }).save({ name: category.name });
 }
 
-export function createCategory(Category) {
-  return new Category({ name: Category.name }).save();
+export function createCategory(category) {
+  // console.log('tesst', Category.name);
+  return new Category({ name: category.name }).save();
 }
 
 export function deleteCategory(id) {

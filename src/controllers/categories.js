@@ -24,6 +24,7 @@ export async function fetchById(req, res, next) {
 
 export async function create(req, res, next) {
   try {
+    // console.log(req.body);
     const data = await categoryService.createCategory(req.body);
 
     res.status(HttpStatus.CREATED).json({ data });
